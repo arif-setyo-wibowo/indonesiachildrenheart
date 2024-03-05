@@ -16,7 +16,7 @@
 <body>
   <div class="content-wrapper">
     <header class="wrapper bg-soft-primary">
-        @if ($title == 'Berita' || $title == 'Galeri' || $title == 'Sejarah' || $title == 'Pengurus')
+        @if ($title == 'Berita' || $title == 'Galeri' || $title == 'Sejarah' || $title == 'Pengurus' || $title == 'Berita Detail')
         <nav class="navbar navbar-expand-lg center-nav transparent position-absolute navbar-dark caret-none">
             <div class="container flex-lg-row flex-nowrap align-items-center">
                 <div class="navbar-brand w-100">
@@ -219,7 +219,7 @@
       <div class="row gy-6 gy-lg-0">
         <div class="col-lg-4">
           <div class="widget">
-            <img class="mb-4" src="./assets/img/logo-light.png" srcset="./assets/img/logo-light@2x.png 2x" alt="" />
+            <img class="mb-4" src="{{ asset('assets/')}}/img/logo-light.png" srcset="{{ asset('assets/')}}/img/logo-light@2x.png 2x" alt="" />
             <p class="mb-4">© 2023 Sandbox. All rights reserved.</p>
             <nav class="nav social social-white">
               <a href="#"><i class="uil uil-twitter"></i></a>
@@ -279,8 +279,8 @@
       <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
     </svg>
   </div>
-  <script src="./assets/js/plugins.js"></script>
-  <script src="./assets/js/theme.js"></script>
+  <script src="{{ asset('assets/')}}/js/plugins.js"></script>
+  <script src="{{ asset('assets/')}}/js/theme.js"></script>
 </body>
 
 </html>

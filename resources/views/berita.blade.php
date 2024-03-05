@@ -23,7 +23,7 @@
                         <article class="item post col-md-6">
                             <div class="card">
                                 <figure class="card-img-top overlay overlay-1 hover-scale">
-                                    <a href="#"> <img src="./assets/img/photos/b4.jpg" alt="" /></a>
+                                    <a href="#"> <img src="{{ asset('assets/')}}/img/photos/b4.jpg" alt="" /></a>
                                     <figcaption>
                                         <h5 class="from-top mb-0">Read More</h5>
                                     </figcaption>
@@ -34,7 +34,7 @@
                                             <a href="#" class="hover" rel="category">Coding</a>
                                         </div>
                                         <!-- /.post-category -->
-                                        <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="./blog-post.html">Ligula tristique quis risus</a></h2>
+                                        <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="{{ route('berita.detail')}}">Ligula tristique quis risus</a></h2>
                                     </div>
                                     <!-- /.post-header -->
                                     <div class="post-content">
@@ -59,7 +59,7 @@
                         <article class="item post col-md-6">
                             <div class="card">
                                 <figure class="card-img-top overlay overlay-1 hover-scale">
-                                    <a href="#"> <img src="./assets/img/photos/b5.jpg" alt="" /></a>
+                                    <a href="#"> <img src="{{ asset('assets/')}}/img/photos/b5.jpg" alt="" /></a>
                                     <figcaption>
                                         <h5 class="from-top mb-0">Read More</h5>
                                     </figcaption>
@@ -95,7 +95,7 @@
                         <article class="item post col-md-6">
                             <div class="card">
                                 <figure class="card-img-top overlay overlay-1 hover-scale">
-                                    <a href="#"> <img src="./assets/img/photos/b6.jpg" alt="" /></a>
+                                    <a href="#"> <img src="{{ asset('assets/')}}/img/photos/b6.jpg" alt="" /></a>
                                     <figcaption>
                                         <h5 class="from-top mb-0">Read More</h5>
                                     </figcaption>
@@ -131,7 +131,7 @@
                         <article class="item post col-md-6">
                             <div class="card">
                                 <figure class="card-img-top overlay overlay-1 hover-scale">
-                                    <a href="#"> <img src="./assets/img/photos/b7.jpg" alt="" /></a>
+                                    <a href="#"> <img src="{{ asset('assets/')}}/img/photos/b7.jpg" alt="" /></a>
                                     <figcaption>
                                         <h5 class="from-top mb-0">Read More</h5>
                                     </figcaption>

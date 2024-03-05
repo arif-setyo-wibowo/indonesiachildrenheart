@@ -31,6 +31,7 @@ Route::controller(HomeController::class)->group(function () {
 
 Route::controller(BeritaController::class)->prefix('berita')->group(function () {
     Route::get('/', 'index')->name('berita');
+    Route::get('/detail', 'detail')->name('berita.detail');
 });
 
 

@@ -19,13 +19,7 @@ class BeritaController extends Controller
         return view('admin/admin_berita',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    
 
     /**
      * Store a newly created resource in storage.
