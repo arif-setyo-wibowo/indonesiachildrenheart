@@ -12,7 +12,11 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Berita'
+        ];
+
+        return view('admin/admin_berita',$data);
     }
 
     /**

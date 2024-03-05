@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\admin\BeritaController as AdminBeritaController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\GaleriController as AdminGaleriController;
+use App\Http\Controllers\admin\PengurusController;
 use App\Http\Controllers\admin\PetugasController;
 use App\Http\Controllers\admin\SejarahController;
 use App\Http\Controllers\admin\SliderController;
@@ -56,6 +57,7 @@ Route::prefix('back')->group(function () {
     
     Route::controller(SliderController::class)->group(function () {
         Route::get('/slider', 'index')->name('admin.slider');
+        Route::post('/slider', 'store')->name('admin.slider.post');
     });
 
     Route::controller(AdminBeritaController::class)->group(function () {
@@ -72,6 +74,10 @@ Route::prefix('back')->group(function () {
 
     Route::controller(PetugasController::class)->group(function () {
         Route::get('/petugas', 'index')->name('admin.petugas');
+    });
+
+    Route::controller(PengurusController::class)->group(function () {
+        Route::get('/pengurus', 'index')->name('admin.pengurus');
     });
 
 

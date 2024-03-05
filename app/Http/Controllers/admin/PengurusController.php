@@ -12,7 +12,11 @@ class PengurusController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Pengurus'
+        ];
+
+        return view('admin/admin_pengurus',$data);
     }
 
     /**

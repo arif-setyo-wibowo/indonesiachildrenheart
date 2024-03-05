@@ -13,7 +13,11 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Petugas'
+        ];
+
+        return view('admin/admin_petugas',$data);
     }
 
     /**

@@ -19,6 +19,13 @@
   <link rel="stylesheet" href="{{ asset('assets/admin/')}}/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/admin/')}}/css/adminlte.min.css">
+
+   {{-- Data Tables --}}
+   <link rel="stylesheet" href="{{ asset('assets/admin/') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+   <link rel="stylesheet" href="{{ asset('assets/admin/') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+   <link rel="stylesheet" href="{{ asset('assets/admin/') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+   
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('assets/admin/')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
@@ -29,10 +36,10 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
+  {{-- <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="{{ asset('assets/admin/')}}/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
+  </div> --}}
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -43,9 +50,6 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
   </nav>
@@ -77,7 +81,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -93,7 +97,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('admin.pengurus')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Pengurus
@@ -101,24 +105,16 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('admin.sejarah')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Sejarah
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                VIsi Misi
-              </p>
-            </a>
-          </li>
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('admin.berita')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Berita
@@ -127,10 +123,27 @@
           </li>
           
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('admin.galeri')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Galeri
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('admin.petugas')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Petugas
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.petugas')}}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Logout
               </p>
             </a>
           </li>
@@ -191,6 +204,24 @@
 <script src="{{ asset('assets/admin/')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/admin/')}}/js/adminlte.js"></script>
+
+<script src="{{ asset('assets/admin/') }}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ asset('assets/admin/') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('assets/admin/') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{ asset('assets/admin/') }}/plugins/datatables-responsive/js/respon   sive.bootstrap4.min.js"></script>
+<script src="{{ asset('assets/admin/') }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="{{ asset('assets/admin/') }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="{{ asset('assets/admin/') }}/plugins/jszip/jszip.min.js"></script>
+<script src="{{ asset('assets/admin/') }}/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="{{ asset('assets/admin/') }}/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="{{ asset('assets/admin/') }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="{{ asset('assets/admin/') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="{{ asset('assets/admin/') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="{{ asset('assets/admin') }}/js/custom.js"></script>
+
+
+@yield('js')
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('assets/admin/')}}/js/pages/dashboard.js"></script>
 </body>

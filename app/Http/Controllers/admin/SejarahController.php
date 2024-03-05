@@ -12,7 +12,11 @@ class SejarahController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Sejarah'
+        ];
+
+        return view('admin/admin_sejarah',$data);
     }
 
     /**

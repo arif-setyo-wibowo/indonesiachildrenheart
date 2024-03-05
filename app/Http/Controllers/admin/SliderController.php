@@ -12,7 +12,11 @@ class SliderController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Slider'
+        ];
+
+        return view('admin/admin_slider',$data);
     }
 
     /**
@@ -28,7 +32,7 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
