@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kontaks', function (Blueprint $table) {
+        Schema::create('kontaks_tables', function (Blueprint $table) {
             $table->id();
+            $table->text('alamat');
+            $table->text('notelp');
+            $table->text('email');
+            $table->text('map');
             $table->timestamps();
         });
     }
