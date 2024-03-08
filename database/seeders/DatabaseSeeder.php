@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             KategoriSeeder::class,
             BlogSeeder::class,
             PetugasSeeder::class,
+            GaleriSeeder::class,
         ]);
     }
 }
