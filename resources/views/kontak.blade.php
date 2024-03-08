@@ -1,35 +1,22 @@
 @extends('template.template')
 @section('content')
 
-<section class="wrapper image-wrapper bg-image bg-overlay bg-overlay-400 text-white" data-image-src="./assets/img/photos/bg3.jpg">
-    <div class="container pt-17 pb-20 pt-md-19 pb-md-21 text-center">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h1 class="display-1 mb-3 text-white">Get in Touch</h1>
-          <nav class="d-inline-block" aria-label="breadcrumb">
-            <ol class="breadcrumb text-white">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Contact</li>
-            </ol>
-          </nav>
-          <!-- /nav -->
-        </div>
-        <!-- /column -->
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container -->
-  </section>
+
   <!-- /section -->
-  <section class="wrapper bg-light angled upper-end">
-    <div class="container pb-11">
-      <div class="row mb-14 mb-md-16">
-        <div class="col-xl-10 mx-auto mt-n19">
+  <section class="wrapper bg-light">
+    <div class="container py-14 py-md-16">
+      <div class="row mb-3">
+        <div class="col-md-10 col-lg-12 col-xl-10 col-xxl-9 mx-auto text-center">
+          <h2 class="fs-15 text-uppercase text-muted mb-3">Kontak</h2>
+        </div>
+        <!--/column -->
+      </div>
+        <div class="row gx-lg-8 gx-xl-12 ">
           <div class="card">
             <div class="row gx-0">
               <div class="col-lg-6 align-self-stretch">
                 <div class="map map-full rounded-top rounded-lg-start">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25387.23478654725!2d-122.06115399490332!3d37.309248660190086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb4571bd377ab%3A0x394d3fe1a3e178b4!2sCupertino%2C%20CA%2C%20USA!5e0!3m2!1sen!2str!4v1645437305701!5m2!1sen!2str" style="width:100%; height: 100%; border:0" allowfullscreen></iframe>
+                  <iframe width="520" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=Yayasan%20Indonesian%20Children%20Heart%20Sidoarjo+(Yayasan%20Indonesian%20Children%20Heart)&amp;t=&amp;z=18&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> <a href='https://embedmap.org/'>embedding google maps into website</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=4ecd834e9e13afe3b664f443d46b031dc9a289b3'></script>
                 </div>
                 <!-- /.map -->
               </div>
@@ -42,7 +29,7 @@
                     </div>
                     <div class="align-self-start justify-content-start">
                       <h5 class="mb-1">Address</h5>
-                      <address>Moonshine St. 14/05 Light City, <br class="d-none d-md-block" />London, United Kingdom</address>
+                      <address>Jl. Bebekan Masjid No.11, RT.13/RW.04, <br> Bebekan, Kec. Taman, Kabupaten Sidoarjo, Jawa Timur 61257 </address>
                     </div>
                   </div>
                   <!--/div -->
@@ -52,20 +39,10 @@
                     </div>
                     <div>
                       <h5 class="mb-1">Phone</h5>
-                      <p>00 (123) 456 78 90 <br />00 (987) 654 32 10</p>
+                      081334679714
                     </div>
                   </div>
                   <!--/div -->
-                  <div class="d-flex flex-row">
-                    <div>
-                      <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-envelope"></i> </div>
-                    </div>
-                    <div>
-                      <h5 class="mb-1">E-mail</h5>
-                      <p class="mb-0"><a href="mailto:sandbox@email.com" class="link-body">sandbox@email.com</a></p>
-                      <p class="mb-0"><a href="mailto:help@sandbox.com" class="link-body">help@sandbox.com</a></p>
-                    </div>
-                  </div>
                   <!--/div -->
                 </div>
                 <!--/div -->
@@ -74,8 +51,6 @@
             </div>
             <!--/.row -->
           </div>
-          <!-- /.card -->
-        </div>
         <!-- /column -->
       </div>
       <!-- /.row -->

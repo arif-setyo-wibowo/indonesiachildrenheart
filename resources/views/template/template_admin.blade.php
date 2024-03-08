@@ -81,7 +81,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link">
+            <a href="{{ route('dashboard')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -114,10 +114,19 @@
           </li>
 
           <li class="nav-item">
+            <a href="{{ route('admin.kategori')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Kategori Berita
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="{{ route('admin.berita')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Berita
+                Berita  
               </p>
             </a>
           </li>
@@ -136,6 +145,15 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Petugas
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="{{ route('admin.kontak')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Kontak
               </p>
             </a>
           </li>
@@ -174,6 +192,7 @@
 </div>
 <!-- ./wrapper -->
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- jQuery -->
 <script src="{{ asset('assets/admin/')}}/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -224,5 +243,62 @@
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('assets/admin/')}}/js/pages/dashboard.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const deleteButtons = document.querySelectorAll('.delete-btn');
+
+      deleteButtons.forEach(button => {
+          button.addEventListener('click', function (event) {
+              event.preventDefault();
+
+              const url = button.dataset.url;
+              const text = button.dataset.text;
+
+              Swal.fire({
+                  title: 'Konfirmasi Hapus',
+                  text: text,
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#d33',
+                  cancelButtonColor: '#3085d6',
+                  confirmButtonText: 'Ya, Hapus!'
+              }).then((result) => {
+                  if (result.isConfirmed) {
+                      window.location.href = url;
+                  }
+              });
+          });
+      });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const deleteButtons = document.querySelectorAll('.delete-btn-relasi');
+
+      deleteButtons.forEach(button => {
+          button.addEventListener('click', function (event) {
+              event.preventDefault();
+
+              const url = button.dataset.url;
+              const text = button.dataset.text;
+
+              Swal.fire({
+                  title: 'Konfirmasi Hapus',
+                  html: 'Apakah Anda Yakin Ingin Menghapus Data? <br> Menghapus Data ini Dapat Menghapus Seluruh Data Yang Berhubungan',
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#d33',
+                  cancelButtonColor: '#3085d6',
+                  confirmButtonText: 'Ya, Hapus!'
+              }).then((result) => {
+                  if (result.isConfirmed) {
+                      window.location.href = url;
+                  }
+              });
+          });
+      });
+  });
+</script>
 </body>
 </html>

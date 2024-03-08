@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class SliderController extends Controller
 {
@@ -13,51 +18,37 @@ class SliderController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Slider'
+            'title' => 'Slider',
+            'slider' => Slider::all()
         ];
 
         return view('admin/admin_slider',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function storeUpdate(Request $request)
     {
-        //
+        if ($request->proses == 'Update') {
+            $request->validate([
+                'slider.*' => 'image|mimes:jpg,jpeg,png,svg',
+            ]);
+            
+            $slider = Slider::find($request->idslider);
+            $slider->judul = $request->judul;
+            $slider->deskripsi = $request->deskripsi;
+            if ($request->file('foto')) {
+                $foto = $request->file('foto');
+                $fotoName = Str::random(20) . '.' . $foto->getClientOriginalExtension();
+                $foto->move(public_path('uploads'), $fotoName);
+                $slider->slider = $fotoName;
+            }
+
+            $slider->save();
+
+            Session::flash('msg', 'Berhasil Mengubah Data Slider');
+            return redirect()->route('admin.slider');
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

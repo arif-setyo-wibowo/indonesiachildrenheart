@@ -66,68 +66,88 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Jabatan</th>
-                                                <th>Foto</th>
+                                                <th>Judul</th>
+                                                <th>Deskripsi</th>
+                                                <th>Kategori</th>
+                                                <th>Cover</th>
+                                                <th>Foto Tambahan</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- @foreach ($petugas as $item)
+                                         @foreach ($berita as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->username }}</td>
+                                                <td>{{ $item->judul }}</td>
+                                                <td>{{ $item->isi }}</td>
+                                                <td>{{ $item->kategori->kategori }}</td>
+                                                <td>
+                                                    <div class="row">
+                                                        <img width="150px" src="{{ asset('uploads/'.$item->cover)}}" alt="">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="row">
+                                                        @foreach (explode(',', $item->foto_tambahan) as $image)
+                                                            <img class="m-2" width="150px "src="{{ asset('uploads/' . trim($image)) }}" class="img-fluid mb-2" alt="white sample" />
+                                                        @endforeach
+                                                    </div>
+                                                </td>
                                                     <td>
                                                         <button type="button" class="btn btn-info btn-sm"
-                                                            onclick="editPetugas('{{ $item->id }}','{{ $item->nama }}','{{ $item->username }}','{{ $item->password }}')">
+                                                            onclick="editBerita('{{ $item->idberita }}','{{ $item->judul }}','{{ $item->isi }}','{{ $item->idkategori }}')">
                                                             <i class="fas fa-pencil-alt"></i>
                                                             Edit
                                                         </button>
-                                                        <a class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Petugas?')"
-                                                        href="{{ route('delete.petugas', ['id' => $item->id]) }}">
+                                                        <a class="btn btn-danger btn-sm delete-btn"
+                                                        data-url="{{ route('admin.delete.berita', ['id' => $item->idberita]) }}">
                                                             <i class="fas fa-trash">
                                                             </i>
                                                             Delete
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                @endforeach --}}
+                                                @endforeach 
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="tab-tambah-edit" role="tabpanel"
                                     aria-labelledby="custom-tab-tambah-edit">
-                                    <form action="{{ url()->current()}}" method="POST">
+                                    <form action="{{ url()->current()}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Judul</label>
-                                            <input type="text" class="form-control" id="nama" name="nama"
+                                            <input type="text" class="form-control" id="judul" name="judul"
                                                 placeholder="Masukkan Judul" required>
-                                            <input type="hidden" name="id" id="id">
+                                            <input type="hidden" name="idberita" id="idberita">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Sub Judul</label>
-                                            <input type="text" class="form-control" id="deskripsi" name="jabatan"
-                                                placeholder="Masukkan Sub Judul" required>
-                                        </div>
-                                        
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Deskripsi</label>
-                                            <input type="text" class="form-control" id="deskripsi" name="jabatan"
-                                                placeholder="Masukkan Deskrispi" required>
+                                            <textarea class="form-control" name="isi" id="isi" cols="30" rows="10"></textarea>
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Kategori</label>
-                                            <input type="text" class="form-control" id="deskripsi" name="jabatan"
-                                                placeholder="Masukkan Kategori" required>
+                                            <label>Kategori</label>
+                                            <select class="form-control" name="idkategori" id="kategori" required>
+                                                <option selected disabled value="">Pilih Kategori</option>
+                                                @foreach ($kategori as $data)
+                                                    <option value="{{ $data->idkategori }}">
+                                                        {{ $data->kategori }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Foto</label>
+                                            <label for="exampleInputEmail1">Foto Cover</label>
                                             <input type="file" class="form-control" id="foto" name="foto"
                                                  required>
+                                                 <span class="text-danger" id="notifPassword"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Foto Multiple Tambahan</label>
+                                            <input type="file" class="form-control" id="foto_tambahan" name="foto_tambahan[]"
+                                            multiple required >
+                                            <span class="text-danger" id="notifPassword_1"></span>
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" name="proses" id="proses" value="Tambah"
@@ -145,4 +165,33 @@
         <!-- /.container-fluid -->
     </section>
 </div>
+@endsection
+@section('js')
+<script>
+    $('#isi').summernote({
+    toolbar: [
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['fontsize', ['fontsize']], 
+        ['color', ['color']],       
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['insert', ['link']],
+    ],
+    styleTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'], 
+    fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36'], 
+    colors: [
+        ['#000000', '#ffffff', '#e6e6e6', '#d3d3d3', '#c0c0c0', '#b7b7b7', '#a0a0a0', '#808080', '#555555', '#333333'],
+        ['#ff0000', '#ff9900', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#9900ff', '#ff00ff', '#ffcc00', '#993300'],
+        ['#c0c0c0', '#808080', '#ffffff', '#000000']
+    ]
+});
+  </script>
+<script src="{{ asset('assets/') }}/js/custom.js"></script>
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+  </script>
 @endsection

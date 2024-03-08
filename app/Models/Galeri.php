@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Galeri extends Model
 {
     use HasFactory;
+    protected $table = 'galeris';
+    public $primaryKey = 'idgaleri';
 }

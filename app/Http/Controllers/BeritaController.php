@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class BeritaController extends Controller
@@ -12,10 +14,12 @@ class BeritaController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Berita'
+            'title' => 'Berita',
+            'berita' => Berita::with('kategori')->paginate(10), 
+            'kategori' => Kategori::all(),
         ];
-
-        return view('berita',$data);
+    
+        return view('berita', $data);
     }
 
     /**

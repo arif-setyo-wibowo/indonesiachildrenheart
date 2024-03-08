@@ -1,5 +1,10 @@
 @extends('template.template_admin')
 @section('content')
+<style>
+    #tab-edit-li {
+        display: none;
+    }
+</style> 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -25,23 +30,23 @@
             <div class="row">
                 <div class="col-12 ">
                     <?php if (session()->has('msg')) :?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="autoDismissAlert">
-                        {{ session('msg') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <?php endif ?>
-                    @if ($errors->any())
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="autoDismissAlert">
-                            @foreach ($errors->all() as $error)
-                            {{ $error }}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="autoDismissAlert">
+                            {{ session('msg') }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            @endforeach
                         </div>
-                    @endif
+                    <?php endif ?>
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="autoDismissAlert">
+                                @foreach ($errors->all() as $error)
+                                {{ $error }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                @endforeach
+                            </div>
+                        @endif
                     <div class="card card-primary card-outline card-tabs">
                         <div class="card-header p-0 pt-1 border-bottom-0">
                             <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
@@ -50,10 +55,10 @@
                                         href="#tab-kategori" role="tab" aria-controls="tab-kategori"
                                         aria-selected="true">Data User</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item" id="tab-edit-li">
                                     <a class="nav-link" id="custom-tab-tambah-edit" data-toggle="pill"
                                         href="#tab-tambah-edit" role="tab" aria-controls="tab-tambah-edit"
-                                        aria-selected="false">Edit Slider</a>
+                                        aria-selected="false">Edit Sejarah</a>
                                 </li>
                             </ul>
                         </div>
@@ -66,44 +71,39 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Foto</th>
                                                 <th>Judul</th>
+                                                <th>Deskripsi</th>
+                                                <th>Foto</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- @foreach ($petugas as $item)
+                                            @foreach ($slider as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->username }}</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-info btn-sm"
-                                                            onclick="editPetugas('{{ $item->id }}','{{ $item->nama }}','{{ $item->username }}','{{ $item->password }}')">
-                                                            <i class="fas fa-pencil-alt"></i>
-                                                            Edit
-                                                        </button>
-                                                        <a class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Petugas?')"
-                                                        href="{{ route('delete.petugas', ['id' => $item->id]) }}">
-                                                            <i class="fas fa-trash">
-                                                            </i>
-                                                            Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                @endforeach --}}
+                                                <td>{{ $item->judul }}</td>
+                                                <td>{{ $item->deskripsi }}</td>
+                                                < <td><img width="150px" src="{{ asset('uploads/' . $item->slider)}}"></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-info btn-sm"
+                                                    onclick="editSlider('{{ $item->idslider }}','{{ $item->judul }}','{{ $item->deskripsi }}')">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                                @endforeach 
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="tab-tambah-edit" role="tabpanel"
                                     aria-labelledby="custom-tab-tambah-edit">
-                                    <form action="{{ url()->current()}}" method="POST">
+                                    <form action="{{ route('admin.slider.post')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Judul</label>
                                             <input type="text" class="form-control" id="judul" name="judul"
                                                 placeholder="Masukkan Judul" required>
-                                            <input type="hidden" name="id" id="id">
+                                            <input type="hidden" name="idslider" id="idslider">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Deskripsi</label>
@@ -115,9 +115,10 @@
                                             <label for="exampleInputEmail1">Foto</label>
                                             <input type="file" class="form-control" id="foto" name="foto"
                                                  required>
+                                                 <span class="text-danger" id="notifPassword"></span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit" name="proses" id="proses" value="Tambah"
+                                            <input type="submit" name="proses" id="proses" value="Update"
                                                 class="btn btn-primary">
                                         </div>
                                     </form>
@@ -132,4 +133,15 @@
         <!-- /.container-fluid -->
     </section>
 </div>
+@endsection
+@section('js')
+<script src="{{ asset('assets/') }}/js/custom.js"></script>
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+</script>
 @endsection

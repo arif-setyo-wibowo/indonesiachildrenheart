@@ -73,42 +73,42 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- @foreach ($petugas as $item)
+                                         @foreach ($pengurus as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->username }}</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-info btn-sm"
-                                                            onclick="editPetugas('{{ $item->id }}','{{ $item->nama }}','{{ $item->username }}','{{ $item->password }}')">
-                                                            <i class="fas fa-pencil-alt"></i>
-                                                            Edit
-                                                        </button>
-                                                        <a class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Petugas?')"
-                                                        href="{{ route('delete.petugas', ['id' => $item->id]) }}">
+                                                <td>{{ $item->jabatan }}</td>
+                                                <td><img width="250px" src="{{ asset('uploads/' . $item   ->foto)}}"></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-info btn-sm"
+                                                    onclick="editPengurus('{{ $item->idpengurus }}','{{ $item->nama }}','{{ $item->jabatan }}')">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                        Edit
+                                                    </button>
+                                                        <a class="btn btn-danger btn-sm delete-btn"
+                                                            data-url="{{ route('admin.delete.pengurus', ['id' => $item->idpengurus]) }}">
                                                             <i class="fas fa-trash">
                                                             </i>
                                                             Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                @endforeach --}}
+                                                        </a> 
+                                                </td>
+                                            </tr>
+                                            @endforeach
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="tab-tambah-edit" role="tabpanel"
                                     aria-labelledby="custom-tab-tambah-edit">
-                                    <form action="{{ url()->current()}}" method="POST">
+                                    <form action="{{ url()->current() }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama</label>
                                             <input type="text" class="form-control" id="nama" name="nama"
                                                 placeholder="Masukkan Nama" required>
-                                            <input type="hidden" name="id" id="id">
+                                            <input type="hidden" name="idpengurus" id="idpengurus">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Jabatan</label>
-                                            <input type="text" class="form-control" id="deskripsi" name="jabatan"
+                                            <input type="text" class="form-control" id="jabatan" name="jabatan"
                                                 placeholder="Masukkan Jabatan" required>
                                         </div>
                                         
@@ -116,6 +116,7 @@
                                             <label for="exampleInputEmail1">Foto</label>
                                             <input type="file" class="form-control" id="foto" name="foto"
                                                  required>
+                                                 <span class="text-danger" id="notifPassword"></span>
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" name="proses" id="proses" value="Tambah"
@@ -133,4 +134,18 @@
         <!-- /.container-fluid -->
     </section>
 </div>
+@endsection
+@section('js')
+
+<script src="{{ asset('assets/') }}/js/custom.js"></script>
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+  </script>
+
+
 @endsection

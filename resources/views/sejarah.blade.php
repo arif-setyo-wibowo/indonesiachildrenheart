@@ -2,86 +2,54 @@
 @section('content')
 <section class="wrapper">
     <div class="container py-14 py-md-16">
+      
+      <div class="row mb-3">
+        <div class="col-md-10 col-lg-12 col-xl-10 col-xxl-9 mx-auto text-center">
+          <h2 class="fs-15 text-uppercase text-muted mb-3">Sejarah</h2>
+        </div>
+        <!--/column -->
+      </div>
       <div class="row gy-10 gy-sm-13 gx-md-8 gx-xl-12 align-items-center mb-10 mb-md-12">
+        <div class="col-md-8 col-lg-6 col-xl-5 order-lg-2 position-relative">
+          <div class="shape bg-soft-primary rounded-circle rellax w-20 h-20" data-rellax-speed="1" style="top: -2rem; right: -1.9rem;"></div>
+          <figure class="rounded"><img style="max-width: 475px; max-height: 497px; width: auto; height: auto;" src="{{ asset('uploads/' . $sejarah->foto)}}"></figure>
+        </div>
         <div class="col-lg-6">
-          <div class="row gx-md-5 gy-5">
+          <h2 class="display-4 mb-3">{{ $sejarah->judul}}</h2>
+          <p class="lead fs-lg">{{ $sejarah->dekripsi}}</p>
+          <div class="row gx-xl-10 gy-6">
             <div class="col-md-6">
-              <figure class="rounded"><img src="{{ asset('assets/')}}/img/photos/g12.jpg" srcset="{{ asset('assets/')}}/img/photos/g12@2x.jpg 2x" alt=""></figure>
+              <div class="d-flex flex-row">
+                <div>
+                  <div class="icon btn btn-block pe-none btn-soft-primary me-4 w-10 h-10"> <span class="number fs-18">1</span> </div>
+                </div>
+                <div>
+                  <h4 class="mb-1">Our Mission</h4>
+                  <p class="mb-0">{{ $sejarah->misi}}</p>
+                </div>
+              </div>
             </div>
             <!--/column -->
-            <div class="col-md-6 align-self-end">
-              <figure class="rounded"><img src="{{ asset('assets/')}}/img/photos/g13.jpg" srcset="{{ asset('assets/')}}/img/photos/g13@2x.jpg 2x" alt=""></figure>
-            </div>
-            <!--/column -->
-            <div class="col-12">
-              <figure class="rounded mx-md-5"><img src="{{ asset('assets/')}}/img/photos/g11.jpg" srcset="{{ asset('assets/')}}/img/photos/g11@2x.jpg 2x" alt=""></figure>
+            <div class="col-md-6">
+              <div class="d-flex flex-row">
+                <div>
+                  <div class="icon btn btn-block pe-none btn-soft-primary me-4 w-10 h-10"> <span class="number fs-18">2</span> </div>
+                </div>
+                <div>
+                  <h4 class="mb-1">Our Vission</h4>
+                  <p class="mb-0">{{ $sejarah->visi}}</p>
+                </div>
+              </div>
             </div>
             <!--/column -->
           </div>
           <!--/.row -->
         </div>
         <!--/column -->
-        <div class="col-lg-6">
-          <h2 class="fs-16 text-uppercase text-primary mb-3">Who Are We?</h2>
-          <h3 class="display-3 mb-5">Company that believes in the power of creative strategy.</h3>
-          <p class="mb-6">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed.</p>
-          <div class="row align-items-center counter-wrapper gy-6">
-            <div class="col-md-6">
-              <h3 class="counter counter-lg mb-1">99.7%</h3>
-              <h5 class="mb-0">Customer Satisfaction</h5>
-            </div>
-            <!--/column -->
-            <div class="col-md-6">
-              <h3 class="counter counter-lg mb-1">12x</h3>
-              <h5 class="mb-0">Revenue Growth</h5>
-            </div>
-            <!--/column -->
-          </div>
-          <!--/.row -->
-        </div>
+
         <!--/column -->
       </div>
       <!--/.row -->
-      <div class="row gx-lg-8 gx-xl-12 gy-6 mb-7 mb-md-9">
-        <div class="col-lg-4">
-          <div class="d-flex flex-row">
-            <div>
-              <div class="icon btn btn-block pe-none btn-soft-primary me-4 w-10 h-10"> <span class="number fs-18">1</span> </div>
-            </div>
-            <div>
-              <h3>Our Vision</h3>
-              <p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget. Fusce dapibus tellus.</p>
-            </div>
-          </div>
-        </div>
-        <!--/column -->
-        <div class="col-lg-4">
-          <div class="d-flex flex-row">
-            <div>
-              <div class="icon btn btn-block pe-none btn-soft-primary me-4 w-10 h-10"> <span class="number fs-18">2</span> </div>
-            </div>
-            <div>
-              <h3>Our Mission</h3>
-              <p class="mb-2">Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet. Sed posuere consectetur.</p>
-            </div>
-          </div>
-        </div>
-        <!--/column -->
-        <div class="col-lg-4">
-          <div class="d-flex flex-row">
-            <div>
-              <div class="icon btn btn-block pe-none btn-soft-primary me-4 w-10 h-10"> <span class="number fs-18">3</span> </div>
-            </div>
-            <div>
-              <h3>Our Values</h3>
-              <p class="mb-2">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna scelerisque.</p>
-            </div>
-          </div>
-        </div>
-        <!--/column -->
-      </div>
-      <!--/.row -->
-      <div class="text-center"><a href="#" class="btn btn-primary">More Details</a></div>
     </div>
     <!-- /.container -->
   </section>

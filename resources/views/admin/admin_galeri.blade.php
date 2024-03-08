@@ -72,43 +72,49 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- @foreach ($petugas as $item)
+                                           @foreach ($galeri as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->username }}</td>
+                                                <td>
+                                                    <div class="row">
+                                                        @foreach (explode(',', $item->gambar) as $image)
+                                                            <img class="m-2" width="150px "src="{{ asset('uploads/' . trim($image)) }}" class="img-fluid mb-2" alt="white sample" />
+                                                        @endforeach
+                                                    </div>
+                                                </td>
                                                     <td>
                                                         <button type="button" class="btn btn-info btn-sm"
-                                                            onclick="editPetugas('{{ $item->id }}','{{ $item->nama }}','{{ $item->username }}','{{ $item->password }}')">
+                                                            onclick="editGaleri('{{ $item->idgaleri }}','{{ $item->nama }}')">
                                                             <i class="fas fa-pencil-alt"></i>
                                                             Edit
                                                         </button>
-                                                        <a class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Petugas?')"
-                                                        href="{{ route('delete.petugas', ['id' => $item->id]) }}">
+                                                        <a class="btn btn-danger btn-sm delete-btn"
+                                                        data-url="{{ route('admin.delete.galeri', ['id' => $item->idgaleri]) }}">
                                                             <i class="fas fa-trash">
                                                             </i>
                                                             Delete
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                @endforeach --}}
+                                                @endforeach
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="tab-tambah-edit" role="tabpanel"
                                     aria-labelledby="custom-tab-tambah-edit">
-                                    <form action="{{ url()->current()}}" method="POST">
+                                    <form action="{{ url()->current()}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Nama Foto</label>
+                                            <label for="exampleInputEmail1">Judul Kegiatan</label>
                                             <input type="text" class="form-control" id="nama" name="nama"
                                                 placeholder="Masukkan Nama Foto" required>
-                                            <input type="hidden" name="id" id="id">
+                                            <input type="   " name="idgaleri" id="idgaleri">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Foto</label>
-                                            <input type="file" class="form-control" id="foto" name="foto"
-                                                 required>
+                                            <input type="file" class="form-control" id="foto" name="foto[]"
+                                                multiple required>
+                                                <span class="text-danger" id="notifPassword"></span>
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" name="proses" id="proses" value="Tambah"
@@ -126,4 +132,15 @@
         <!-- /.container-fluid -->
     </section>
 </div>
+@endsection
+@section('js')
+<script src="{{ asset('assets/') }}/js/custom.js"></script>
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+  </script>
 @endsection

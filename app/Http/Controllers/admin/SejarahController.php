@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Sejarah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class SejarahController extends Controller
 {
@@ -13,7 +16,8 @@ class SejarahController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Sejarah'
+            'title' => 'Sejarah',
+            'sejarah' => Sejarah::all()
         ];
 
         return view('admin/admin_sejarah',$data);
@@ -54,9 +58,26 @@ class SejarahController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        
+        $sejarah = Sejarah::first();
+
+        if ($request->file('foto')) {
+            File::delete('uploads/'.$sejarah->foto);
+            $foto = $request->file('foto');
+            $fotoName = Str::random(20) . '.' . $foto->getClientOriginalExtension();
+            $foto->move(public_path('uploads'), $fotoName);
+            $sejarah->foto = $fotoName;
+        }
+
+        $sejarah->judul = $request->judul;
+        $sejarah->dekripsi = $request->dekripsi;
+        $sejarah->visi = $request->visi;
+        $sejarah->misi = $request->misi;
+        $sejarah->save();
+
+        return redirect()->route('admin.sejarah')->with(['success' => 'Berhasil Mengubah Data']);
     }
 
     /**

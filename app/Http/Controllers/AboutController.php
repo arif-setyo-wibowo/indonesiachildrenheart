@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengurus;
+use App\Models\Sejarah;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -11,8 +13,10 @@ class AboutController extends Controller
      */
     public function index()
     {
+        $sejarah = Sejarah::all();
         $data = [
-            'title' => 'Sejarah'
+            'title' => 'Sejarah',
+            'sejarah' => $sejarah[0]
         ];
 
         return view('sejarah',$data);
@@ -24,7 +28,8 @@ class AboutController extends Controller
     public function pengurus()
     {
         $data = [
-            'title' => 'Pengurus'
+            'title' => 'Pengurus',
+            'pengurus' => Pengurus::all()
         ];
 
         return view('pengurus',$data);

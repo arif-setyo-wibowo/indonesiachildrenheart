@@ -4,6 +4,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\admin\BeritaController as AdminBeritaController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\GaleriController as AdminGaleriController;
+use App\Http\Controllers\admin\KategoriController;
+use App\Http\Controllers\admin\KontakController as AdminKontakController;
 use App\Http\Controllers\admin\PengurusController;
 use App\Http\Controllers\admin\PetugasController;
 use App\Http\Controllers\admin\SejarahController;
@@ -56,29 +58,42 @@ Route::prefix('back')->group(function () {
         Route::get('/', 'index')->name('dashboard');
     });
     
-    Route::controller(SliderController::class)->group(function () {
-        Route::get('/slider', 'index')->name('admin.slider');
-        Route::post('/slider', 'store')->name('admin.slider.post');
+    Route::controller(SliderController::class)->prefix('slider')->group(function () {
+        Route::get('/', 'index')->name('admin.slider');
+        Route::post('/', 'storeUpdate')->name('admin.slider.post');
     });
 
-    Route::controller(AdminBeritaController::class)->group(function () {
-        Route::get('/berita', 'index')->name('admin.berita');
+    Route::controller(AdminBeritaController::class)->prefix('berita')->group(function () {
+        Route::get('/', 'index')->name('admin.berita');
+        Route::post('/', 'storeUpdate')->name('admin.berita.store.update');
+        Route::get('/delete', 'destroy')->name('admin.delete.berita');
     });
 
-    Route::controller(AdminGaleriController::class)->group(function () {
-        Route::get('/galeri', 'index')->name('admin.galeri');
+    Route::controller(AdminGaleriController::class)->prefix('galeri')->group(function () {
+        Route::get('/', 'index')->name('admin.galeri');
+        Route::post('/', 'storeUpdate')->name('admin.galeri.store.update');
+        Route::get('/delete', 'destroy')->name('admin.delete.galeri');
     });
 
     Route::controller(SejarahController::class)->group(function () {
         Route::get('/sejarah', 'index')->name('admin.sejarah');
+        Route::post('/sejarah', 'update')->name('admin.sejarah.post');
     });
 
     Route::controller(PetugasController::class)->group(function () {
         Route::get('/petugas', 'index')->name('admin.petugas');
     });
 
-    Route::controller(PengurusController::class)->group(function () {
-        Route::get('/pengurus', 'index')->name('admin.pengurus');
+    Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
+        Route::get('/', 'index')->name('admin.kategori');
+        Route::post('/', 'storeUpdate')->name('admin.kategori.store.update');
+        Route::get('/delete', 'destroy')->name('admin.delete.kategori');
+    });
+
+    Route::controller(PengurusController::class)->prefix('pengurus')->group(function () {
+        Route::get('/', 'index')->name('admin.pengurus');
+        Route::post('/', 'storeUpdate')->name('admin.pengurus.store.update');
+        Route::get('/delete', 'destroy')->name('admin.delete.pengurus');
     });
 
 

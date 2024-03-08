@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Galeri;
 use Illuminate\Http\Request;
 
 class GaleriController extends Controller
@@ -12,7 +13,8 @@ class GaleriController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Galeri'
+            'title' => 'Galeri',
+            'galeri' => Galeri::all()
         ];
 
         return view('galeri',$data);
