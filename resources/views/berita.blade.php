@@ -102,10 +102,19 @@
             <!-- /column -->
             <aside class="col-lg-4 sidebar mt-8 mt-lg-6">
                 <div class="widget">
-                    <form class="search-form">
-                        <div class="form-floating mb-0">
-                            <input id="search-form" type="text" class="form-control" placeholder="Search">
-                            <label for="search-form">Search</label>
+                    <form action="{{ route('berita.search') }}" method="GET">
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="keyword" class="form-control" placeholder="Search">
+                                    <label for="search-form">Search</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-3 mt-md-0">
+                                <div class="form-floating mb-0">
+                                    <button class="btn btn-md btn-primary rounded me-md-2 mb-2 mb-md-0" type="submit">Submit</button>
+                                </div>
+                             </div>
                         </div>
                     </form>
                     <!-- /.search-form -->
@@ -122,7 +131,7 @@
                         @endphp
                 
                         @if ($jumlahBerita > 0)
-                            <li><a href="#">{{ $item->kategori }} ({{ $jumlahBerita }})</a></li>
+                            <li><a href="{{ route('berita.by.kategori', $item->idkategori) }}">{{ $item->kategori }} ({{ $jumlahBerita }})</a></li>
                         @endif
                     @endforeach
                     </ul>
@@ -139,7 +148,7 @@
                     <h4 class="widget-title mb-3">Archive</h4>
                     <ul class="unordered-list bullet-primary text-reset">
                         @foreach ($archivedItems as $monthYear => $items)
-                            <li><a href="#">{{ $monthYear }}</a></li>
+                            <li><a href="{{ route('berita.by.archive', $monthYear) }}">{{ $monthYear }}</a></li>
                         @endforeach
                     </ul>
 

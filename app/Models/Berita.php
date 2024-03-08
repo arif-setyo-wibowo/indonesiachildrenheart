@@ -11,6 +11,7 @@ class Berita extends Model
     use HasFactory;
     protected $table = 'beritas';
     public $primaryKey = 'idberita';
+    protected $fillable = ['judul', 'isi'];
 
     public function kategori(): BelongsTo
     {
