@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             PengurusSeeder::class,
             KategoriSeeder::class,
             BlogSeeder::class,
+            PetugasSeeder::class,
         ]);
     }
 }
