@@ -150,15 +150,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="{{ route('admin.kontak')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Kontak
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.petugas')}}" class="nav-link">
+            <a href="{{ route('logout')}}" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Logout

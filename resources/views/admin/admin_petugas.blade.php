@@ -72,7 +72,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- @foreach ($petugas as $item)
+                                            @foreach ($petugas as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->nama }}</td>
@@ -91,8 +91,8 @@
                                                             Delete
                                                         </a>
                                                     </td>
-                                                </tr>
-                                                @endforeach --}}
+                                            </tr>
+                                            @endforeach
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="tab-tambah-edit" role="tabpanel"
@@ -130,12 +130,12 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
+        <!-- /.container-fluid  -->
     </section>
 </div>
 @endsection
 @section('js')
-<script src="{{ asset('assets/admin') }}/assets/js/custom.js"></script>
+<script src="{{ asset('assets/') }}/js/custom.js"></script>
 <script>
     $(function () {
       $("#example1").DataTable({

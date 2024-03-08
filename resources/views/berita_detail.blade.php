@@ -13,7 +13,6 @@
             <h1 class="display-1 mb-4">Commodo Dolor Bibendum Parturient Cursus Mollis</h1>
             <ul class="post-meta mb-5">
               <li class="post-date"><i class="uil uil-calendar-alt"></i><span>5 Jul 2022</span></li>
-              <li class="post-author"><a href="#"><i class="uil uil-user"></i><span>By Sandbox</span></a></li>
             </ul>
             <!-- /.post-meta -->
           </div>

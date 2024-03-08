@@ -14,6 +14,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,10 +51,14 @@ Route::controller(AboutController::class)->prefix('about')->group(function () {
     Route::get('/pengurus', 'pengurus')->name('pengurus');
 });
 
+Route::controller(LoginController::class)->prefix('login')->group(function () {
+    Route::get('/', 'index')->name('login');
+    Route::post('/', 'postlogin')->name('postlogin');
+});
 
 
 
-Route::prefix('back')->group(function () {
+Route::middleware('petugas')->prefix('back')->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/', 'index')->name('dashboard');
     });
@@ -80,10 +85,14 @@ Route::prefix('back')->group(function () {
         Route::post('/sejarah', 'update')->name('admin.sejarah.post');
     });
 
-    Route::controller(PetugasController::class)->group(function () {
-        Route::get('/petugas', 'index')->name('admin.petugas');
+    Route::controller(PetugasController::class)->prefix('petugas')->group(function () {
+        Route::get('/', 'index')->name('admin.petugas');
+        Route::post('/', 'storeUpdate')->name('petugas.store.update');
+        Route::get('/delete', 'destroy')->name('delete.petugas');
     });
 
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+    
     Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
         Route::get('/', 'index')->name('admin.kategori');
         Route::post('/', 'storeUpdate')->name('admin.kategori.store.update');
