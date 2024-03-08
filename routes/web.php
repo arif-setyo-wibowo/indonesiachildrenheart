@@ -34,9 +34,9 @@ Route::controller(HomeController::class)->group(function () {
 
 Route::controller(BeritaController::class)->prefix('berita')->group(function () {
     Route::get('/', 'index')->name('berita');
-    Route::get('/{idkategori}', [BeritaController::class, 'beritaByKategori'])->name('berita.by.kategori');
-    Route::get('/archive/{monthYear}', [BeritaController::class, 'beritaByArchive'])->name('berita.by.archive');
-    Route::get('/search', [BeritaController::class, 'searchBerita'])->name('berita.search');
+    Route::get('/{idkategori}', 'beritaByKategori')->name('berita.by.kategori');
+    Route::get('/archive/{monthYear}', 'beritaByArchive')->name('berita.by.archive');
+    Route::get('/search', 'searchBerita')->name('berita.search');
     Route::get('/detail', 'detail')->name('berita.detail');
 });
 
