@@ -64,7 +64,7 @@
           <div class="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem"></div>
           <div class="overlap-grid overlap-grid-2">
             <div class="item">
-              <figure class="rounded shadow"><img src="{{ asset('uploads/'.$sejarah->foto)}}" alt=""></figure>
+              <figure class="rounded shadow"><img src="{{ asset('uploads/' . $sejarah->foto)}}" alt=""></figure>
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@
                 <div class="item-inner">
                   <div class="card">
                     <div class="card-body">
-                      <img class="rounded-circle w-15 mb-4" src="{{ asset('uploads/'.$item->foto)}}" srcset="{{ asset('assets/')}}/img/avatars/te1@2x.jpg 2x" alt="" />
+                      <img class="rounded-circle w-15 mb-4" src="{{ asset('uploads/' . $item->foto)}}" srcset="{{ asset('assets/')}}/img/avatars/te1@2x.jpg 2x" alt="" />
                       <h4 class="mb-1">{{ $item->nama}}</h4>
                       <div class="meta mb-2">{{ $item->jabatan}}</div>
                       <!-- /.social -->
@@ -142,7 +142,7 @@
               <article class="item post col-md-6">
                 <div class="card">
                     <figure class="card-img-top overlay overlay-1 hover-scale">
-                        <a href="#"> <img style="max-width: 100%; max-height: 300px; width: auto; height: auto;" src="{{ asset('uploads/'.$item->cover)}}" alt="" /></a>
+                        <a href="#"> <img style="max-width: 100%; max-height: 300px; width: auto; height: auto;" src="{{ asset('uploads/' . $item->cover)}}" alt="" /></a>
                         <figcaption>
                             <h5 class="from-top mb-0">Read More</h5>
                         </figcaption>

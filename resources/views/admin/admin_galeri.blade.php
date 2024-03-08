@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 ">
-                    <?php if (session()->has('msg')) :?>
+                    <?php if (session()->has('msg')):?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert" id="autoDismissAlert">
                         {{ session('msg') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -108,7 +108,7 @@
                                             <label for="exampleInputEmail1">Judul Kegiatan</label>
                                             <input type="text" class="form-control" id="nama" name="nama"
                                                 placeholder="Masukkan Nama Foto" required>
-                                            <input type="   " name="idgaleri" id="idgaleri">
+                                            <input type="hidden" name="idgaleri" id="idgaleri">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Foto</label>

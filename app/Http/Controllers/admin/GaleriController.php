@@ -21,7 +21,7 @@ class GaleriController extends Controller
             'galeri' => Galeri::all()
         ];
 
-        return view('admin/admin_galeri',$data);
+        return view('admin/admin_galeri', $data);
     }
 
     /**
@@ -33,10 +33,10 @@ class GaleriController extends Controller
             $request->validate([
                 'gambar.*' => 'image|mimes:jpg,jpeg,png,svg',
             ]);
-            
+
 
             $galeri = new Galeri;
-            $galeri->judul = $request->judul;
+            $galeri->nama = $request->nama;
 
             $gambar = [];
             if ($request->hasFile('foto')) {
@@ -50,11 +50,11 @@ class GaleriController extends Controller
             $galeri->save();
             Session::flash('msg', 'Berhasil Menambah Data Gambar');
             return redirect()->route('admin.galeri');
-        }elseif ($request->proses == 'Update') {
+        } elseif ($request->proses == 'Update') {
             $request->validate([
                 'gambar.*' => 'image|mimes:jpg,jpeg,png,svg',
             ]);
-            
+
             $galeri = Galeri::find($request->idgaleri);
             $galeri->nama = $request->nama;
 
@@ -83,7 +83,7 @@ class GaleriController extends Controller
 
         $fotoPaths = explode(',', $galeri->foto);
         foreach ($fotoPaths as $fotoPath) {
-            File::delete('uploads/'.$fotoPath);
+            File::delete('uploads/' . $fotoPath);
         }
         $galeri->delete();
         Session::flash('msg', 'Berhasil Menghapus Data Gambar');

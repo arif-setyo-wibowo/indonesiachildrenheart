@@ -21,8 +21,8 @@
       <div class="swiper">
         <div class="swiper-wrapper">
           @foreach (explode(',', $item->gambar) as $image)
-            <div class="swiper-slide image-container">
-              <figure class="rounded mb-6"><img style="max-width: 100%; max-height: 300px; height:auto; overflow: hidden;" src="{{ asset('uploads/' . trim($image)) }}" srcset="{{ asset('uploads/' . trim($image)) }}" alt="" /><a class="item-link" href="{{ asset('uploads/' . trim($image)) }}" data-glightbox data-gallery="projects-group"><i class="uil uil-focus-add"></i></a></figure>
+            <div class="swiper-slide image-container bg-secondary rounded" style="height: 440px; display:flex; justify-content:center; align-items:center">
+              <figure><img style="max-width: 100%; max-height: 440px; height: auto; overflow: hidden; object-fit: cover; display: block; margin-left:auto; margin-right:auto;" src="{{ asset('uploads/' . trim($image)) }}" srcset="{{ asset('uploads/' . trim($image)) }}" alt="" /><a class="item-link" href="{{ asset('uploads/' . trim($image)) }}" data-glightbox data-gallery="projects-group"><i class="uil uil-focus-add"></i></a></figure>
               <!-- /.project-details -->
             </div>
           @endforeach 

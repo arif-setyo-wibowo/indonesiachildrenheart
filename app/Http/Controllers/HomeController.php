@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $sejarah = Sejarah::all();
         $data = [
             'title' => 'Beranda',
@@ -18,6 +19,6 @@ class HomeController extends Controller
             'berita' => Berita::take(4)->get(),
         ];
 
-        return view('home',$data);
+        return view('home', $data);
     }
 }
